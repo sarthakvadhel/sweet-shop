@@ -10,12 +10,15 @@ class SweetShop:
     def __init__(self):
         self._inventory = {}
 
-    def add_sweet(self, sweet: Sweet):
-        """Adds a sweet to inventory. If it exists, raises an error."""
+    def add_sweet(self, sweet):
         if sweet.id in self._inventory:
             raise ValueError("Sweet with this ID already exists.")
         self._inventory[sweet.id] = sweet
 
     def view_sweets(self):
-        """Returns a list of all available sweets."""
         return list(self._inventory.values())
+
+    def delete_sweet(self, sweet_id):
+        if sweet_id not in self._inventory:
+            raise ValueError("Sweet not found.")
+        del self._inventory[sweet_id]

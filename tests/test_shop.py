@@ -23,3 +23,19 @@ def test_add_duplicate_sweet_raises_error():
 
     with pytest.raises(ValueError):
         shop.add_sweet(sweet2)
+
+def test_delete_existing_sweet():
+    shop = SweetShop()
+    sweet = Sweet(1002, "Gulab Jamun", "Milk-Based", 10, 50)
+
+    shop.add_sweet(sweet)
+    shop.delete_sweet(1002)
+
+    assert len(shop.view_sweets()) == 0
+
+
+def test_delete_nonexistent_sweet_raises_error():
+    shop = SweetShop()
+    # Trying to delete something that doesn't exist should fail
+    with pytest.raises(ValueError):
+        shop.delete_sweet(9999)
