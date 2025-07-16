@@ -79,3 +79,17 @@ def test_purchase_nonexistent_sweet_raises_error():
     shop = SweetShop()
     with pytest.raises(ValueError):
         shop.purchase_sweet(9999, 1)
+
+def test_restock_sweet_success():
+    shop = SweetShop()
+    sweet = Sweet(1020, "Jalebi", "Sugar-Based", 12, 10)
+    shop.add_sweet(sweet)
+
+    shop.restock_sweet(1020, 5)
+    assert sweet.quantity == 15
+
+
+def test_restock_nonexistent_sweet_raises_error():
+    shop = SweetShop()
+    with pytest.raises(ValueError):
+        shop.restock_sweet(8888, 5)
