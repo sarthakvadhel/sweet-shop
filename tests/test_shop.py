@@ -39,3 +39,32 @@ def test_delete_nonexistent_sweet_raises_error():
     # Trying to delete something that doesn't exist should fail
     with pytest.raises(ValueError):
         shop.delete_sweet(9999)
+
+def test_search_by_name():
+    shop = SweetShop()
+    shop.add_sweet(Sweet(1, "Kaju Katli", "Nut-Based", 50, 10))
+    shop.add_sweet(Sweet(2, "Gulab Jamun", "Milk-Based", 30, 20))
+
+    results = shop.search_sweets(name="katli")
+    assert len(results) == 1
+    assert results[0].name == "Kaju Katli"
+
+
+def test_search_by_category():
+    shop = SweetShop()
+    shop.add_sweet(Sweet(3, "Gajar Halwa", "Veg-Based", 20, 5))
+    shop.add_sweet(Sweet(4, "Rasgulla", "Milk-Based", 25, 12))
+
+    results = shop.search_sweets(category="Milk-Based")
+    assert len(results) == 1
+    assert results[0].name == "Rasgulla"
+
+
+def test_search_by_price_range():
+    shop = SweetShop()
+    shop.add_sweet(Sweet(5, "Barfi", "Nut-Based", 60, 8))
+    shop.add_sweet(Sweet(6, "Ladoo", "Gram-Based", 15, 25))
+
+    results = shop.search_sweets(min_price=10, max_price=50)
+    assert len(results) == 1
+    assert results[0].name == "Ladoo"
