@@ -50,3 +50,11 @@ class SweetShop:
         if sweet_id not in self._inventory:
             raise ValueError("Sweet not found.")
         self._inventory[sweet_id].quantity += quantity
+
+    def sort_sweets(self, by="name", reverse=False):
+        """Sort sweets by a given field: name, category, price, quantity."""
+        valid_fields = {"name", "category", "price", "quantity"}
+        if by not in valid_fields:
+            raise ValueError(f"Cannot sort by '{by}'. Valid fields: {valid_fields}")
+
+        return sorted(self._inventory.values(), key=lambda s: getattr(s, by), reverse=reverse)

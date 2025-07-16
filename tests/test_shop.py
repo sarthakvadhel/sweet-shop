@@ -93,3 +93,32 @@ def test_restock_nonexistent_sweet_raises_error():
     shop = SweetShop()
     with pytest.raises(ValueError):
         shop.restock_sweet(8888, 5)
+
+def test_sort_sweets_by_price_ascending():
+    shop = SweetShop()
+    shop.add_sweet(Sweet(1, "Barfi", "Nut-Based", 60, 10))
+    shop.add_sweet(Sweet(2, "Ladoo", "Gram-Based", 20, 5))
+    shop.add_sweet(Sweet(3, "Gulab Jamun", "Milk-Based", 40, 8))
+
+    sorted_sweets = shop.sort_sweets(by="price")
+    prices = [s.price for s in sorted_sweets]
+    assert prices == [20, 40, 60]
+
+
+def test_sort_sweets_by_name_descending():
+    shop = SweetShop()
+    shop.add_sweet(Sweet(4, "Kaju Katli", "Nut-Based", 50, 10))
+    shop.add_sweet(Sweet(5, "Rasgulla", "Milk-Based", 30, 20))
+    shop.add_sweet(Sweet(6, "Besan Ladoo", "Gram-Based", 40, 15))
+
+    sorted_sweets = shop.sort_sweets(by="name", reverse=True)
+    names = [s.name for s in sorted_sweets]
+    assert names == ["Rasgulla", "Kaju Katli", "Besan Ladoo"]
+
+
+def test_sort_sweets_invalid_field_raises_error():
+    shop = SweetShop()
+    shop.add_sweet(Sweet(7, "Halwa", "Veg-Based", 25, 10))
+
+    with pytest.raises(ValueError):
+        shop.sort_sweets(by="flavour")
