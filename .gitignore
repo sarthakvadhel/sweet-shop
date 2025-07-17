@@ -1,18 +1,15 @@
-# Byte-compiled / cache files
 __pycache__/
-*.py[cod]
+*.pyc
 *.pyo
-
-# Virtual environment
+*.pyd
+.Python
+env/
 venv/
-
-# VS Code settings
-.vscode/
-
-# Test reports
-*.html
-*.xml
-*.coverage
-
-# MacOS metadata
-.DS_Store
+.venv/
+*.sqlite3
+*.db
+*.log
+*.egg-info/
+.pytest_cache/
+instance/
+.env

@@ -1,0 +1,17 @@
+/* static/style.css */
+body {
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  h1 {
+    color: #b22222;
+  }
+  
+  table {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  td, th {
+    vertical-align: middle;
+  }
+  
