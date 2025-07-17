@@ -95,12 +95,6 @@ pytest
 
 ---
 
-## 📸 Screenshots
-
-> Add screenshots here (optional)
-
----
-
 ## 🤝 Contributing
 
 Feel free to fork this repo and improve the project — pull requests are welcome!
